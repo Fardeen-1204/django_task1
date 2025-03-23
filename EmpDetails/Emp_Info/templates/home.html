@@ -1,0 +1,55 @@
+{%load custom_filters%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Table</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Employee Information</h2>
+    <a style="text-align:center;" href="{%url 'emp_details_form'%}" >Add Employee</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Emp Name</th>
+                <th>Emp City</th>
+                <th>Emp Company</th>
+                <th>Emp update/delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%for i in emp_details%}
+    <tr>
+        <th> <a href="{%url 'emp_card' i.id%}">{{i.emp_name}}</a></th>
+        <th>{{i.emp_city}}</th>
+        <th>{{i.emp_company}}</th>
+        <th>
+            <button ><a href="{%url 'emp_delete' i.id%}">Delete</a></button>
+            <button><a href="{%url 'page_update' i.id%}">Update</a></button>
+    </tr>
+    
+    {%endfor%}
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+
+        <h2>Contact Us</h2>
+        <form action="{%url 'emp_details_form'%}" method="post">
+            {%csrf_token%}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="Empname" placeholder="Enter your name" required>
+
+            <label for="city">City:- </label>
+            <input type="text" id="city" name="Empcity" required>
+
+            <label for="message">Company:- </label>
+            <input type="text" id="message" name="Empcompany"  required>
+
+            <label for="desc">Description:- </label>
+            <textarea name="desc" id="desc" required></textarea>
+
+            <label for="message">Image:- </label>
+            <input type="file" id="img" name="img"  required>
+
+            <button type="submit" class="btn">Submit</button>
+            {{mesg}}
+        </form>
+        <br>
+        <br>
+        <button class="btn"><a href="{%url 'emp_details'%}">EmpDetails</a></button>
+
+    </div>
+
+</body>
+</html>
